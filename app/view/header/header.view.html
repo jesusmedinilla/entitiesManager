@@ -1,0 +1,19 @@
+<script src="view/header/header.controller.js" DEVFILE="true"></script>
+<!-- BEGIN PROD FILES
+<script src="view/header/header.controller.min.js"></script>
+END PROD FILES -->
+
+<div id="header" class="container-fluid" data-ng-controller="HeaderCtrl">
+    <div class="row">
+        <div class="col-xs-4">
+            <a href="#/">My app AngularJS</a>
+        </div>
+
+        <div class="col-xs-8 text-right" data-ng-if="isLogged">
+            <label>{{ welcomeMessage }}</label>
+            <a href="#/login">Logout</a>
+        </div>
+    </div>
+
+
+</div>
