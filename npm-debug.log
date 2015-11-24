@@ -1,0 +1,107 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'karma-runner' ]
+2 info using npm@2.9.0
+3 info using node@v0.12.2
+4 verbose install initial load of /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/package.json
+5 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/bower/package.json
+6 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/grunt/package.json
+7 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/gulp/package.json
+8 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/gulp-delete-lines/package.json
+9 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/gulp-jshint/package.json
+10 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/gulp-jsmin/package.json
+11 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/gulp-minify-html/package.json
+12 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/gulp-rename/package.json
+13 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/gulp-webserver/package.json
+14 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/http-server/package.json
+15 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/jasmine-core/package.json
+16 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/karma/package.json
+17 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/karma-chrome-launcher/package.json
+18 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/karma-firefox-launcher/package.json
+19 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/karma-jasmine/package.json
+20 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/karma-junit-reporter/package.json
+21 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/karma-phantomjs-launcher/package.json
+22 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/karma-requirejs/package.json
+23 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/phantomjs/package.json
+24 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/protractor/package.json
+25 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/requirejs/package.json
+26 verbose installManyTop reading scoped package data from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/node_modules/shelljs/package.json
+27 verbose readDependencies loading dependencies from /Users/jesus/Documents/Proyectos/workspaces/entitiesManager/package.json
+28 silly cache add args [ 'karma-runner', null ]
+29 verbose cache add spec karma-runner
+30 silly cache add parsed spec { raw: 'karma-runner',
+30 silly cache add   scope: null,
+30 silly cache add   name: 'karma-runner',
+30 silly cache add   rawSpec: '',
+30 silly cache add   spec: '*',
+30 silly cache add   type: 'range' }
+31 silly addNamed karma-runner@*
+32 verbose addNamed "*" is a valid semver range for karma-runner
+33 silly addNameRange { name: 'karma-runner', range: '*', hasData: false }
+34 silly mapToRegistry name karma-runner
+35 silly mapToRegistry using default registry
+36 silly mapToRegistry registry https://registry.npmjs.org/
+37 silly mapToRegistry uri https://registry.npmjs.org/karma-runner
+38 verbose addNameRange registry:https://registry.npmjs.org/karma-runner not in flight; fetching
+39 verbose request uri https://registry.npmjs.org/karma-runner
+40 verbose request no auth needed
+41 info attempt registry request try #1 at 19:12:30
+42 verbose request id d28835a06e990759
+43 http request GET https://registry.npmjs.org/karma-runner
+44 http 404 https://registry.npmjs.org/karma-runner
+45 verbose headers { 'content-type': 'application/json',
+45 verbose headers   'cache-control': 'max-age=0',
+45 verbose headers   'content-length': '2',
+45 verbose headers   'accept-ranges': 'bytes',
+45 verbose headers   date: 'Tue, 24 Nov 2015 18:12:31 GMT',
+45 verbose headers   via: '1.1 varnish',
+45 verbose headers   age: '0',
+45 verbose headers   connection: 'keep-alive',
+45 verbose headers   'x-served-by': 'cache-fra1224-FRA',
+45 verbose headers   'x-cache': 'MISS',
+45 verbose headers   'x-cache-hits': '0',
+45 verbose headers   'x-timer': 'S1448388750.785369,VS0,VE849' }
+46 silly get cb [ 404,
+46 silly get   { 'content-type': 'application/json',
+46 silly get     'cache-control': 'max-age=0',
+46 silly get     'content-length': '2',
+46 silly get     'accept-ranges': 'bytes',
+46 silly get     date: 'Tue, 24 Nov 2015 18:12:31 GMT',
+46 silly get     via: '1.1 varnish',
+46 silly get     age: '0',
+46 silly get     connection: 'keep-alive',
+46 silly get     'x-served-by': 'cache-fra1224-FRA',
+46 silly get     'x-cache': 'MISS',
+46 silly get     'x-cache-hits': '0',
+46 silly get     'x-timer': 'S1448388750.785369,VS0,VE849' } ]
+47 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/karma-runner
+47 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:239:14)
+47 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+47 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:368:22)
+47 verbose stack     at Request.emit (events.js:110:17)
+47 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1219:14)
+47 verbose stack     at Request.emit (events.js:129:20)
+47 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1167:12)
+47 verbose stack     at IncomingMessage.emit (events.js:129:20)
+47 verbose stack     at _stream_readable.js:908:16
+47 verbose stack     at process._tickCallback (node.js:355:11)
+48 verbose statusCode 404
+49 verbose pkgid karma-runner
+50 verbose cwd /Users/jesus/Documents/Proyectos/workspaces/entitiesManager
+51 error Darwin 14.3.0
+52 error argv "node" "/usr/local/bin/npm" "install" "--save" "karma-runner"
+53 error node v0.12.2
+54 error npm  v2.9.0
+55 error code E404
+56 error 404 Registry returned 404 for GET on https://registry.npmjs.org/karma-runner
+56 error 404
+56 error 404 'karma-runner' is not in the npm registry.
+56 error 404 You should bug the author to publish it (or use the name yourself!)
+56 error 404 It was specified as a dependency of 'entities-management'
+56 error 404
+56 error 404 Note that you can also install from a
+56 error 404 tarball, folder, http url, or git url.
+57 verbose exit [ 1, true ]

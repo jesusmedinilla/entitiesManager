@@ -23,34 +23,23 @@ require.config({
     },
 
     shim: {
-        'app': {
-            deps: ['angular', 'angular-route', 'angular-cookies', 'angular-resource',
-                    'jquery', 'parse'] //, 'version', 'version-directive', 'interpolate-filter'
-        },
-        'angular-route': {
-            deps: ['angular']
-        },
-        'angular-cookies': {
-            deps: ['angular']
-        },
-        'angular-resource': {
-            deps: ['angular']
-        },
-        'parse': {
-            deps: ['jquery']
-        }
-        //exports: 'Parse',
-
-        /*'version': {
-            deps: ['angular']
-        },
-        'version-directive': {
-            deps: ['angular']
-        },
-        'interpolate-filter': {
-            deps: ['angular']
-        }*/
+    'app': {
+        deps: ['angular', 'angular-route', 'angular-cookies', 'angular-resource',
+                    'jquery', 'parse']
+    },
+    'angular-route': {
+        deps: ['angular']
+    },
+    'angular-cookies': {
+        deps: ['angular']
+    },
+    'angular-resource': {
+        deps: ['angular']
+    },
+    'parse': {
+        deps: ['jquery']
     }
+}
 });
 
 require(

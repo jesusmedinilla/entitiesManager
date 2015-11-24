@@ -8,6 +8,7 @@ define(['app'], function (app) {
 
         function initController() {
             // reset login status
+            vm.dataLoading = false;
             AuthenticationFactory.clearCredentials();
         }
 
