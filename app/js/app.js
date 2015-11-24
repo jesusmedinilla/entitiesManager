@@ -1,11 +1,11 @@
-/*global angular, ngRoute, $, define */
+/*global angular, ngRoute, $, define, Parse */
 define(
-    ['js/routing', 'js/factories/dependenciesResolver.factory'],
-    function (routesConf, dependencyResolverFor) {
+    ['js/routing', 'js/factories/dependenciesResolver.factory', 'parse'],
+    function (routesConf, dependencyResolverFor, Parse) {
 
         'use strict';
 
-        var app = angular.module('app', [ 'ngRoute', 'ngCookies' ]); //, 'ngAnimate', 'ui.bootstrap' ]);
+        var app = angular.module('app', ['ngRoute', 'ngCookies', 'ngResource']); //, 'ngAnimate', 'ui.bootstrap' ]);
 
         app.config([
             '$routeProvider',
@@ -19,10 +19,10 @@ define(
             function config($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
 
                 app.controller = $controllerProvider.register;
-                app.directive  = $compileProvider.directive;
-                app.filter     = $filterProvider.register;
-                app.factory    = $provide.factory;
-                app.service    = $provide.service;
+                app.directive = $compileProvider.directive;
+                app.filter = $filterProvider.register;
+                app.factory = $provide.factory;
+                app.service = $provide.service;
 
                 //$locationProvider.html5Mode(true);
                 //$locationProvider.html5Mode({
@@ -32,18 +32,19 @@ define(
 
                 if (routesConf.routes !== undefined) {
                     angular.forEach(routesConf.routes, function (route, path) {
-                        $routeProvider.when(path,
-                            {
-                                templateUrl: route.templateUrl,
-                                controller: route.controller,
-                                controllerAs: route.controllerAs,
-                                resolve: dependencyResolverFor(route.dependencies)
-                            });
+                        $routeProvider.when(path, {
+                            templateUrl: route.templateUrl,
+                            controller: route.controller,
+                            controllerAs: route.controllerAs,
+                            resolve: dependencyResolverFor(route.dependencies)
+                        });
                     });
                 }
 
                 if (routesConf.defaultRoutePath !== undefined) {
-                    $routeProvider.otherwise({redirectTo: config.defaultRoutePath});
+                    $routeProvider.otherwise({
+                        redirectTo: config.defaultRoutePath
+                    });
                 }
             }
         ]);
@@ -70,9 +71,33 @@ define(
             });
         }
 
+        function startParse() {
+            Parse.initialize("atGimMnC7AN88LEtBepThZqhTGTSS7zLCkutq54z", "eMXl6flzsyT48vya1L6smLLRvVf0aGIUeXn4tHTv");
+
+            var TestObject = Parse.Object.extend("TestObject"),
+                testObject = new TestObject();
+
+            testObject.save({
+                foo: "bar"
+            }, {
+                success: function (object) {
+                    $(".success").show();
+                },
+                error: function (model, error) {
+                    $(".error").show();
+                }
+            });
+        }
+
         //app.config(config);
         app.run(run);
-        //app.run( startParse );
+        app.run(startParse);
+
+
+
+
+
+
 
 
         // Refactorizar este controller a otro sitio (WebComponent???)
@@ -91,6 +116,7 @@ define(
                 }
             );
         }
+
         app.controller('HeaderCtrl', HeaderCtrl);
 
         HeaderCtrl.$inject = ['$rootScope', '$scope', '$location'];
@@ -98,24 +124,3 @@ define(
         return app;
     }
 );
-
-
-
-
-
-/*
-function startParse()
-{
-	Parse.initialize("atGimMnC7AN88LEtBepThZqhTGTSS7zLCkutq54z", "eMXl6flzsyT48vya1L6smLLRvVf0aGIUeXn4tHTv");
-
-	var TestObject = Parse.Object.extend("TestObject");
-	var testObject = new TestObject();
-	  testObject.save({foo: "bar"}, {
-	  success: function(object) {
-	    $(".success").show();
-	  },
-	  error: function(model, error) {
-	    $(".error").show();
-	  }
-	})
-}*/

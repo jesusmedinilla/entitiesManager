@@ -13,7 +13,8 @@ define([], function () {
                     'view/header/header.controller',
                     'js/factories/authentication.factory',
                     'js/factories/flash.factory',
-                    'js/services/mock/services.auth.mock'
+                    'js/services/parse/services.auth.parse'
+                    //'js/services/mock/services.auth.mock'
                     //'scripts/services/parse/UserService'
                 ]
             },
@@ -24,7 +25,8 @@ define([], function () {
                 dependencies: [
                     'view/login/register/register.controller',
                     'js/factories/flash.factory',
-                    'js/services/mock/services.auth.mock'
+                    //'js/services/mock/services.auth.mock'
+                    'js/services/parse/services.auth.parse'
                 ]
             },
             '/': {
@@ -36,7 +38,8 @@ define([], function () {
                     'js/factories/flash.factory',
                     'view/header/header.controller',
                     //'scripts/services/parse/CrudService'
-                    'js/services/mock/services.crud.mock'
+                    //'js/services/mock/services.crud.mock'
+                    'js/services/srv/services.crud'
                 ]
 
             },
@@ -47,7 +50,8 @@ define([], function () {
                 dependencies: [
                     'view/entity/entityDetails.controller',
                     'js/factories/flash.factory',
-                    'js/services/mock/services.crud.mock'
+                    //'js/services/mock/services.crud.mock'
+                    'js/services/srv/services.crud'
                 ]
 
             },
@@ -58,7 +62,8 @@ define([], function () {
                 dependencies: [
                     'view/entity/entityDetails.controller',
                     'js/factories/flash.factory',
-                    'js/services/mock/services.crud.mock'
+                    //'js/services/mock/services.crud.mock'
+                    'js/services/srv/services.crud'
                 ]
 
             }

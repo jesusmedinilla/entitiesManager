@@ -2,18 +2,18 @@
 require.config({
     baseUrl: '/',
     paths: {
-        'app' : 'js/app',
-		'angular': '/lib/angular/angular',
-		'angular-route': '/lib/angular-route/angular-route',
+        'app': 'js/app',
+        'angular': '/lib/angular/angular',
+        'angular-route': '/lib/angular-route/angular-route',
         'angular-cookies': '/lib/angular-cookies/angular-cookies',
-        //'angular-resource': '/lib/angular-resource/angular-resource.js',
+        'angular-resource': '/lib/angular-resource/angular-resource',
         //'angular-animate': '/app/lib/angular-animate/angular-animate',
         //'ui-bootstrap': '/app/lib/angular-bootstrap/ui-bootstrap.min',
         //'ui-bootstrap-tpls': '/app/lib/angular-bootstrap/ui-bootstrap-tpls.min',
 
-		//'bootstrap': '/bower_components/bootstrap/dist/js/bootstrap.min',
-		'jquery': '/lib/jquery/dist/jquery'
-        //'parse': '/bower_components/parse/parse',
+        //'bootstrap': '/bower_components/bootstrap/dist/js/bootstrap.min',
+        'jquery': '/lib/jquery/dist/jquery',
+        'parse': '/lib/parse/parse'
 
         //'version': '/lib/version/version',
         //'version-directive': '/lib/version/version-directive',
@@ -23,16 +23,24 @@ require.config({
     },
 
     shim: {
-		'app': {
-			deps: [ 'angular', 'angular-route', 'angular-cookies',
-                    'jquery' ] //, 'version', 'version-directive', 'interpolate-filter'
-		},
-		'angular-route': {
-			deps: ['angular']
-		},
+        'app': {
+            deps: ['angular', 'angular-route', 'angular-cookies', 'angular-resource',
+                    'jquery', 'parse'] //, 'version', 'version-directive', 'interpolate-filter'
+        },
+        'angular-route': {
+            deps: ['angular']
+        },
         'angular-cookies': {
             deps: ['angular']
+        },
+        'angular-resource': {
+            deps: ['angular']
+        },
+        'parse': {
+            deps: ['jquery']
         }
+        //exports: 'Parse',
+
         /*'version': {
             deps: ['angular']
         },
@@ -42,7 +50,7 @@ require.config({
         'interpolate-filter': {
             deps: ['angular']
         }*/
-	}
+    }
 });
 
 require(
