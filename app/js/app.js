@@ -1,49 +1,103 @@
-/*global angular, ngRoute, $ */
+/*global angular, ngRoute, $, define */
+define(
+    ['js/routing', 'js/factories/dependenciesResolver.factory'],
+    function (routesConf, dependencyResolverFor) {
 
-var myApp = angular.module('myApp', [
-    'myRouting', // Cargamos el módulo de rutas
-    'myApp.version', // Cargamos el módulo de las versiones
-    'ngResource',
-    'myApp.version.version-directive',
-    'ngCookies' // 'ui.bootstrap', 'ngAnimate'
-]);
+        'use strict';
 
-myApp.$inject = ['$controllerProvider'];
+        var app = angular.module('app', [ 'ngRoute', 'ngCookies' ]); //, 'ngAnimate', 'ui.bootstrap' ]);
 
-function config($controllerProvider) {
-    'use strict';
-
-    myApp.cp = $controllerProvider; // Guardamos el controllerProvider para poder hacer el lazy load de los controllers
-    myApp.cpRegister = $controllerProvider.register; // Necesario para el testeo
-}
+        app.config([
+            '$routeProvider',
+            '$locationProvider',
+            '$controllerProvider',
+            '$compileProvider',
+            '$filterProvider',
+            '$provide',
 
 
+            function config($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
 
-myApp.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
+                app.controller = $controllerProvider.register;
+                app.directive  = $compileProvider.directive;
+                app.filter     = $filterProvider.register;
+                app.factory    = $provide.factory;
+                app.service    = $provide.service;
 
-function run($rootScope, $location, $cookieStore, $http) {
-    'use strict';
+                //$locationProvider.html5Mode(true);
+                //$locationProvider.html5Mode({
+                //    enabled: false,
+                //    requireBase: false
+                //});
 
-    // keep user logged in after page refresh
-    $rootScope.globals = $cookieStore.get('globals') || {};
-    if ($rootScope.globals.currentUser) {
-        $http.defaults.headers.common.Authorization = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line ['Authorization']
-    }
+                if (routesConf.routes !== undefined) {
+                    angular.forEach(routesConf.routes, function (route, path) {
+                        $routeProvider.when(path,
+                            {
+                                templateUrl: route.templateUrl,
+                                controller: route.controller,
+                                controllerAs: route.controllerAs,
+                                resolve: dependencyResolverFor(route.dependencies)
+                            });
+                    });
+                }
 
-    $rootScope.$on('$locationChangeStart', function (event, next, current) {
-        // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1,
-            loggedIn = $rootScope.globals.currentUser;
+                if (routesConf.defaultRoutePath !== undefined) {
+                    $routeProvider.otherwise({redirectTo: config.defaultRoutePath});
+                }
+            }
+        ]);
 
-        if (restrictedPage && !loggedIn) {
-            $location.path('/login');
+
+
+        app.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
+
+        function run($rootScope, $location, $cookieStore, $http) {
+
+            $rootScope.globals = $cookieStore.get('globals') || {};
+            if ($rootScope.globals.currentUser) {
+                $http.defaults.headers.common.Authorization = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line ['Authorization']
+            }
+
+            $rootScope.$on('$locationChangeStart', function (event, next, current) {
+                // redirect to login page if not logged in and trying to access a restricted page
+                var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1,
+                    loggedIn = $rootScope.globals.currentUser;
+
+                if (restrictedPage && !loggedIn) {
+                    $location.path('/login');
+                }
+            });
         }
-    });
-}
 
-myApp.config(config);
-myApp.run(run);
-//myApp.run( startParse );
+        //app.config(config);
+        app.run(run);
+        //app.run( startParse );
+
+
+        // Refactorizar este controller a otro sitio (WebComponent???)
+        function HeaderCtrl($rootScope, $scope, $location) {
+            $scope.isLogged = false;
+
+            $rootScope.$watch(
+                function (rootScope) {
+                    return $rootScope.globals.currentUser;
+                },
+                function (newValue, oldValue) {
+                    $scope.isLogged = newValue !== undefined;
+                    if ($scope.isLogged) {
+                        $scope.welcomeMessage = "Bienvenido, " + $rootScope.globals.currentUser.username;
+                    }
+                }
+            );
+        }
+        app.controller('HeaderCtrl', HeaderCtrl);
+
+        HeaderCtrl.$inject = ['$rootScope', '$scope', '$location'];
+
+        return app;
+    }
+);
 
 
 

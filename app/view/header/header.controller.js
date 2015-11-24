@@ -1,5 +1,5 @@
-/*global angular*/
-function initModule() {
+/*global angular, define*/
+define(["app"], function (app) {
     'use strict';
 
     function HeaderCtrl($rootScope, $scope, $location) {
@@ -19,18 +19,7 @@ function initModule() {
 
     }
 
-    // Normal LOAD
-
-    //    angular
-    //        .module('myApp')
-    //        .controller('HeaderCtrl', HeaderCtrl);
-
-    // LAZY LOAD
-    angular.module('myApp').cp //Acceso al controller Provider para cargarlo
-        .register('HeaderCtrl', HeaderCtrl);
-
-
     HeaderCtrl.$inject = ['$rootScope', '$scope', '$location'];
-}
+    app.controller('HeaderCtrl', HeaderCtrl);
 
-initModule();
+});

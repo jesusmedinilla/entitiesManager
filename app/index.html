@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" ng-app="myApp" class="no-js">
-<!--<![endif]-->
-
-<html xmlns:ng="http://angularjs.org" ng-app="myApp">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -16,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <!--script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script-->
 </head>
 
@@ -33,51 +26,15 @@
         </div>
     </div>
 
-    <div>My Angular appp: v<span app-version></span></div>
+    <!-- Habrñia que refactorizar la libreria de version a require -->
+    <!--div>My Angular appp: v<span data-app-version></span></div-->
 
-    <script src="lib/jquery/dist/jquery.js" DEVFILE="true"></script>
-    <script src="lib/angular/angular.js" DEVFILE="true"></script>
-    <script src="lib/angular-route/angular-route.js" DEVFILE="true"></script>
-    <script src="lib/angular-resource/angular-resource.js" DEVFILE="true"></script>
-    <script src="lib/angular-cookies/angular-cookies.js" DEVFILE="true"></script>
-    <script src="lib/version/version.js" DEVFILE="true"></script>
-    <script src="lib/version/version-directive.js" DEVFILE="true"></script>
-    <script src="lib/version/interpolate-filter.js" DEVFILE="true"></script>
 
-    <script src="js/app.js" DEVFILE="true"></script>
-    <script src="js/routing.js" DEVFILE="true"></script>
-
-    <!-- Factorías -->
-    <script src="js/factories/authentication.factory.js" DEVFILE="true"></script>
-    <script src="js/factories/flash.factory.js" DEVFILE="true"></script>
-    <script src="js/factories/crud.factory.js" DEVFILE="true"></script>
-
-    <!-- Servicios -->
-    <script src="js/services/mock/services.auth.mock.js" DEVFILE="true"></script>
-    <script src="js/services/mock/services.crud.mock.js" DEVFILE="true"></script>
-
+    <script src="/lib/requirejs/require.js" data-main="/js/bootstrap.js" DEVFILE="true"></script>
 
     <!-- BEGIN PROD FILES
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular-route/angular-route.min.js"></script>
-    <script src="lib/angular-resource/angular-resource.min.js"></script>
-    <script src="lib/angular-cookies/angular-cookies.min.js"></script>
-    <script src="lib/version/version.min.js"></script>
-    <script src="lib/version/version-directive.min.js"></script>
-    <script src="lib/version/interpolate-filter.min.js"></script>
-
-    <script src="js/app.min.js"></script>
-    <script src="js/routing.min.js"></script>
-
-    <script src="js/factories/authentication.factory.min.js"></script>
-    <script src="js/factories/flash.factory.min.js"></script>
-    <script src="js/factories/crud.factory.min.js"></script>
-
-    <script src="js/services/mock/services.auth.mock.min.js"></script>
-    <script src="js/services/mock/services.crud.mock.min.js"></script>
-
-    END PROD FILES -->
+    <script src="/app/lib/requirejs/require.min.js"></script>
+    -->
 </body>
 
 </html>

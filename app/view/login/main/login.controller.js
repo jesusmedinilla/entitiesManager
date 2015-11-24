@@ -1,21 +1,15 @@
-(function () {
+/*global define*/
+define(['app'], function (app) {
     'use strict';
 
-    // LAZY LOAD
-    myApp.cp.register('LoginController', LoginController); //Acceso al controller Provider para cargarlo
-
-
-    LoginController.$inject = ['$location', 'AuthenticationFactory', 'FlashFactory'];
 
     function LoginController($location, AuthenticationFactory, FlashFactory) {
         var vm = this;
 
-        vm.login = login;
-
-        (function initController() {
+        function initController() {
             // reset login status
             AuthenticationFactory.clearCredentials();
-        })();
+        }
 
         function login() {
             vm.dataLoading = true;
@@ -29,6 +23,14 @@
                     //alert(response.message)
                 }
             });
-        };
+        }
+
+        initController();
+        vm.login = login;
     }
-})();
+
+    LoginController.$inject = ['$location', 'AuthenticationFactory', 'FlashFactory'];
+
+    app.controller('LoginController', LoginController);
+
+});

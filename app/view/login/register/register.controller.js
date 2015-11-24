@@ -1,7 +1,6 @@
-/*global angular*/
-function initModule() {
+/*global angular, define*/
+define(['app'], function (app) {
     'use strict';
-
 
     function RegisterController(UserService, $location, $rootScope, FlashFactory) {
 
@@ -25,13 +24,6 @@ function initModule() {
 
     }
 
-    //    angular
-    //        .module('app')
-    //        .controller('RegisterController', RegisterController);
-
-    angular.module("myApp").cp.register('RegisterController', RegisterController);
-
     RegisterController.$inject = ['UserService', '$location', '$rootScope', 'FlashFactory'];
-}
-
-initModule();
+    app.controller('RegisterController', RegisterController);
+});

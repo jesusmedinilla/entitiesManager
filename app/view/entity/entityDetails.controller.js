@@ -1,8 +1,9 @@
-/*global angular*/
-function initModule() {
+/*global angular, define*/
+define(['app'], function (app) {
+
     'use strict';
 
-    function EntityDetailCtrl(CrudFactory, $routeParams, FlashFactory) {
+    function EntityDetailCtrl(CrudService, $routeParams, FlashFactory) {
         var vm = this;
         vm.entity = {};
         vm.dataLoading = false;
@@ -10,7 +11,7 @@ function initModule() {
 
         if (vm.loadedId !== undefined) {
             vm.dataLoading = true;
-            CrudFactory.getItemById($routeParams.id).then(function (response) {
+            CrudService.getItemById($routeParams.id).then(function (response) {
                 if (response.success) {
                     //FlashFactory.Success('Registration successful', true);
                     vm.entity = response.result;
@@ -26,7 +27,7 @@ function initModule() {
             vm.dataLoading = true;
 
             if (this.entity.id !== undefined) {
-                CrudFactory.updateItem(this.entity).then(function (response) {
+                CrudService.updateItem(this.entity).then(function (response) {
                     if (response.success) {
                         vm.dataLoading = false;
                         FlashFactory.success('Entity updated successfuly', true);
@@ -37,7 +38,7 @@ function initModule() {
                     }
                 });
             } else {
-                CrudFactory.createItem(this.entity).then(function (response) {
+                CrudService.createItem(this.entity).then(function (response) {
                     if (response.success) {
                         vm.dataLoading = false;
                         FlashFactory.success('Entity created successfuly', true);
@@ -54,7 +55,7 @@ function initModule() {
             vm.dataLoading = true;
             vm.loadedId = undefined;
 
-            CrudFactory.deleteItem(this.entity).then(function (response) {
+            CrudService.deleteItem(this.entity).then(function (response) {
                 if (response.success) {
                     FlashFactory.success('Boda eliminada correctamente', true);
                     window.location = "#/";
@@ -67,15 +68,7 @@ function initModule() {
         };
     }
 
-    //    angular
-    //        .module('myApp').cp.register
-    //        .controller('WineListCtrl', WineListCtrl)
-    //        .controller('WineDetailCtrl', WineDetailCtrl);
+    EntityDetailCtrl.$inject = ['CrudService', '$routeParams', 'FlashFactory'];
+    app.controller('EntityDetailCtrl', EntityDetailCtrl);
 
-    // LAZY LOAD
-    angular.module('myApp').cp.register('EntityDetailCtrl', EntityDetailCtrl);
-
-    EntityDetailCtrl.$inject = ['CrudFactory', '$routeParams', 'FlashFactory'];
-}
-
-initModule();
+});

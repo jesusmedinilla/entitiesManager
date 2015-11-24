@@ -1,5 +1,5 @@
-/*global angular*/
-function initModule() {
+/*global angular, define*/
+define(['app'], function (app){
     'use strict';
 
     function CrudService($timeout, $filter, $q) {
@@ -118,12 +118,7 @@ function initModule() {
 
     }
 
-    angular
-        .module('myApp')
-        .factory('CrudService', CrudService);
-
     CrudService.$inject = ['$timeout', '$filter', '$q'];
+    app.factory('CrudService', CrudService);
 
-}
-
-initModule();
+});

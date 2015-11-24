@@ -1,38 +1,67 @@
-/*global angular */
-
-angular.module('myRouting', [
-    'ngRoute'
-])
-    .config(['$routeProvider', function ($routeProvider) {
-        'use strict';
-
-        $routeProvider
-            .when('/login', {
+/*global define */
+define([], function () {
+    'use strict';
+    return {
+        defaultRoutePath: '/',
+        routes: {
+            '/login': {
+                templateUrl: '/view/login/main/login.view.html',
                 controller: 'LoginController',
-                templateUrl: 'view/login/main/login.view.html',
-                controllerAs: 'vm'
-            })
-            .when('/register', {
+                controllerAs: 'vm',
+                dependencies: [
+                    'view/login/main/login.controller',
+                    'view/header/header.controller',
+                    'js/factories/authentication.factory',
+                    'js/factories/flash.factory',
+                    'js/services/mock/services.auth.mock'
+                    //'scripts/services/parse/UserService'
+                ]
+            },
+            '/register': {
+                templateUrl: '/view/login/register/register.view.html',
                 controller: 'RegisterController',
-                controllerAs: "vm",
-                templateUrl: 'view/login/register/register.view.html'
-            })
-            .when('/', {
+                controllerAs: 'vm',
+                dependencies: [
+                    'view/login/register/register.controller',
+                    'js/factories/flash.factory',
+                    'js/services/mock/services.auth.mock'
+                ]
+            },
+            '/': {
+                templateUrl: '/view/entity/entityList.view.html',
                 controller: 'EntityListCtrl',
-                controllerAs: "vm",
-                templateUrl: 'view/entity/entityList.view.html'
-            })
-            .when('/entity/add', {
+                controllerAs: 'vm',
+                dependencies: [
+                    'view/entity/entityList.controller',
+                    'js/factories/flash.factory',
+                    'view/header/header.controller',
+                    //'scripts/services/parse/CrudService'
+                    'js/services/mock/services.crud.mock'
+                ]
+
+            },
+            '/entity/add': {
+                templateUrl: '/view/entity/entityDetails.view.html',
                 controller: 'EntityDetailCtrl',
-                controllerAs: "vm",
-                templateUrl: 'view/entity/entityDetails.view.html'
-            })
-            .when('/entity/:id', {
+                controllerAs: 'vm',
+                dependencies: [
+                    'view/entity/entityDetails.controller',
+                    'js/factories/flash.factory',
+                    'js/services/mock/services.crud.mock'
+                ]
+
+            },
+            '/entity/:id': {
+                templateUrl: '/view/entity/entityDetails.view.html',
                 controller: 'EntityDetailCtrl',
-                controllerAs: "vm",
-                templateUrl: 'view/entity/entityDetails.view.html'
-            })
-            .otherwise({
-                redirectTo: '/login'
-            });
-    }]);
+                controllerAs: 'vm',
+                dependencies: [
+                    'view/entity/entityDetails.controller',
+                    'js/factories/flash.factory',
+                    'js/services/mock/services.crud.mock'
+                ]
+
+            }
+        }
+    };
+});

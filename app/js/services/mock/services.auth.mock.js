@@ -1,5 +1,6 @@
-/*global angular*/
-function initModule() {
+/*global angular, define*/
+define(['app'], function (app) {
+
     'use strict';
 
     function UserService($timeout, $filter, $q) {
@@ -149,12 +150,6 @@ function initModule() {
 
     }
 
-    angular
-        .module('myApp')
-        .factory('UserService', UserService);
-
     UserService.$inject = ['$timeout', '$filter', '$q'];
-
-}
-
-initModule();
+    app.factory('UserService', UserService);
+});

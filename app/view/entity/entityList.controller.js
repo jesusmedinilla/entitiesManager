@@ -1,14 +1,15 @@
-/*global angular*/
-function initModule() {
+/*global angular, define*/
+define(['app'], function (app) {
+
     'use strict';
 
-    function EntityListCtrl(CrudFactory, FlashFactory) {
+    function EntityListCtrl(CrudService, FlashFactory) {
 
         var vm = this;
         vm.selectedView = 'default';
         vm.entities = [];
 
-        CrudFactory.getList().then(function (response) {
+        CrudService.getList().then(function (response) {
             if (response.success) {
                 //FlashFactory.success('Listado recuperado en 0 coma', true);
                 vm.entities = response.result;
@@ -22,16 +23,7 @@ function initModule() {
         };
     }
 
-    //    angular
-    //        .module('myApp').cp.register
-    //        .controller('WineListCtrl', WineListCtrl)
-    //        .controller('WineDetailCtrl', WineDetailCtrl);
+    EntityListCtrl.$inject = ['CrudService', 'FlashFactory'];
+    app.controller('EntityListCtrl', EntityListCtrl);
 
-    // LAZY LOAD
-    angular.module('myApp').cp.register('EntityListCtrl', EntityListCtrl);
-
-    EntityListCtrl.$inject = ['CrudFactory', 'FlashFactory'];
-
-}
-
-initModule();
+});
