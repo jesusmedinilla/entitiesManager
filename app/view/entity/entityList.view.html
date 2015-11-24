@@ -1,17 +1,12 @@
 <h2>Entities List</h2>
 
 <div class="container-fluid">
-    <!--div class="row">
+    <div class="row">
         <div class="btn-group">
-            <label class="btn btn-success" ng-model="vm.selectedView" btn-radio="'default'">
-                Vista Listado
-            </label>
-
-            <label class="btn btn-success" ng-model="vm.selectedView" btn-radio="'calendar'">
-                Vista Calendario
-            </label>
+            <input type="button" data-ng-class="{ 'btn btn-success active': vm.selectedView == 'default', 'btn btn-success': vm.selectedView != 'default' }" value="List" ng-click="vm.selectedView = 'default'" />
+            <input type="button" class="btn btn-success" value="Calendar" ng-click="vm.selectedView = 'calendar'" />
         </div>
-    </div-->
+    </div>
     <div class="row margin-top-normal">
         <div class="animate-switch-container" ng-switch="vm.selectedView">
             <div class="animate-switch" ng-switch-when="default">
@@ -20,7 +15,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Date</th>
+                                <th>Year</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,7 +24,7 @@
                                     <a href='#/entity/{{ entity.id }}'>{{ entity.name }}</a>
                                 </td>
                                 <td>
-                                    Today is gonna be the day
+                                    {{ entity.year }}
                                 </td>
                             </tr>
                         </tbody>
@@ -38,11 +33,12 @@
                 </div>
             </div>
 
-            <!--div class="animate-switch" ng-switch-when="calendar">
+            <div class="animate-switch" ng-switch-when="calendar">
                 <div style="display:inline-block; min-height:290px;">
-                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker>
+                    <!--datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm" custom-class="getDayClass(date, mode)"></datepicker-->
+                    <label>Introduce calendar when available</label>
                 </div>
-            </div-->
+            </div>
         </div>
 
         <button data-ng-click="vm.addEntity()" class="btn btn-primary margin-top-normal">Create Entity</button>
